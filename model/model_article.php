@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
     class Article{
         /* ------------------------------ ATTRIBUTS ------------------------------ */
@@ -112,6 +113,21 @@
                 die('Erreur : '.$e->getMessage());
             }
         }
+
+        public function showAllArticle($bdd):array{
+            try{
+                $req = $bdd->prepare('SELECT * FROM article');
+                $req->execute();
+                $data = $req->fetchAll(PDO::FETCH_OBJ);
+                return $data;
+            }
+            catch(Exception $e)
+            {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
     }
 ?>
+
+
 
