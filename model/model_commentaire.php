@@ -93,6 +93,54 @@
 
 
         /* ------------------------------ METHODES ------------------------------ */
+
+        public function addComment($bdd) {
+            try{
+              $req = $bdd->prepare('INSERT INTO commentaire(content_com,
+              date_com, id_util, id_art) VALUES (:content_com,
+              :date_com, :id_util, :id_art)');
+              $req->execute(array(
+                  'content_com' => getContentCom(),
+                  'date_com' => getDateCom(),
+                  'id_util' => getIdUtil(),
+                  'id_art' => getIdArt()
+                  ));
+          }
+          catch(Exception $e)
+          {
+              //affichage d'une exception en cas d’erreur
+              die('Erreur : '.$e->getMessage());
+          }
+          }
+  
+          public function showComments($bdd):array{
+            try{
+                $req = $bdd->prepare('SELECT * FROM commentaire');
+                $req->execute();
+                $data = $req->fetchAll(PDO::FETCH_ASSOC);
+                return $data;
+            }
+            catch(Exception $e)
+            {
+                //affichage d'une exception en cas d’erreur
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+  
+        public function showCommentsByArticle($bdd) {
+          try{
+            $req= $bdd->prepare('SELECT * FROM commentaire INNER JOIN article, utilisateur WHERE commentaire.id_art = article.id_art');
+
+            $req->execute();
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+          }
+          catch(Exception $e)
+          {
+              //affichage d'une exception en cas d’erreur
+              die('Erreur : '.$e->getMessage());
+          }
+        }
     }
 ?>
 
