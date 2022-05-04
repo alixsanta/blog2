@@ -140,15 +140,17 @@
 
 
         /* ------------------------------ METHODES ------------------------------ */  
-        // Fonction qui renvoie la liste des utilisateurs (non admin)
+        // Fonction qui renvoie la liste des utilisateurs (non admin et non banni) 
         public function getAllUser($bdd){
             try{
                 $req = $bdd->prepare('SELECT * FROM utilisateur
                 INNER JOIN blog.role
                 WHERE utilisateur(id_role) = blog.role(id_role)
-                AND nom_role != :nom_role;');
+                AND nom_role != :nom_role
+                AND status_util = :status_util;');
                 $req->execute(array(
-                    "nom_role" => "Admin"
+                    "nom_role" => "Admin",
+                    "status_util" => 0
                 ));
                 return $req->fetchAll(PDO::FETCH_OBJ);
             }
