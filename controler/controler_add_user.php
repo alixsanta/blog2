@@ -1,8 +1,8 @@
 <?php
      
-     include '../utils/connectBdd.php';
-     include '../model/model_user.php';
-     include '../view/view_add_user.php';
+     include './utils/connectBDD.php';
+     include './model/model_user.php';
+     include './view/view_add_user.php';
     
     $message = "";
     

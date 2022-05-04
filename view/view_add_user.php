@@ -15,7 +15,7 @@
         <p>Votre adresse Mail<input type="email" name="mail_util"pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" 
         name="email" required></p>
         <p>Votre Mot de passe<input type="password" name="mdp_util" required></p>
-        <p>êtes vous Administrateur?<input type="checkbox" id="status" name="check"></p>
+        
         <!-- <p>vas y mets une dickPic!!<input type="file" name="img" accept="image/png, image/jpeg"></p> -->
         <p><input type="submit" value="Ajouter utilisateur" name="addUser"></p>
     </form>

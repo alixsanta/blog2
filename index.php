@@ -43,6 +43,10 @@
         case $path === "/tpblog/":
             include './controler/controler_show_all_article.php';
             break;
+        
+        case $path === "/tpblog/addUser":
+            include './controler/controler_add_user.php';
+             break;
         // autre route  ->  ./erreur.php
         case $path !== "/tpblog/":
             include './erreur.php';
