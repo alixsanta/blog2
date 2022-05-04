@@ -5,4 +5,3 @@ function addOption(text, value){
     select.options.add(newOption);
 }
 
-

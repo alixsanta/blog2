@@ -31,6 +31,10 @@
         case $path === "/tpblog/addArticle":
             include './controler/controler_add_article.php';
             break;
+        // route /tpblog/adduser  ->  ./controler/controler_add_user.php (Visiteur : creation de compte)
+        case $path === "/tpblog/login":
+            include './controler/controler_add_user.php';
+            break;
         // route /tpblog/login  ->  ./controler/controler_add_categorie.php (Visiteur : connexion)
         case $path === "/tpblog/login":
             include './controler/controler_connexion.php';

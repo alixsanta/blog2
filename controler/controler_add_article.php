@@ -25,13 +25,11 @@
     /**
      * logique pour l'ajout d'un article
      */
-    // on verifie si
+    // on verifie si les champs osnt remplis et non vide
     if(isset($_POST['nom_art']) && ($_POST['nom_art'] != "") &&
     isset($_POST['content_art']) && ($_POST['content_art'] != "")){
         $nom = $_POST['nom_art'];
         $content = $_POST['content_art'];
-        $cat = $_POST['categorie'];
-        echo $cat;
     }
     else{
         echo "<p>Veuillez remplir tous les champs du formulaire</p>";

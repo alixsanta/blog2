@@ -112,7 +112,7 @@
         /**
          * Get the value of status
          */ 
-        public function getStatus():int{
+        public function getStatus():bool{
             return $this->status;
         }
 
@@ -139,7 +139,70 @@
 
 
 
-        /* ------------------------------ METHODES ------------------------------ */        
+        /* ------------------------------ METHODES ------------------------------ */  
+        // Fonction qui renvoie la liste des utilisateurs (non admin)
+        public function getAllUser($bdd){
+            try{
+                $req = $bdd->prepare('SELECT * FROM utilisateur
+                INNER JOIN blog.role
+                WHERE utilisateur(id_role) = blog.role(id_role)
+                AND nom_role != :nom_role;');
+                $req->execute(array(
+                    "nom_role" => "Admin"
+                ));
+                return $req->fetchAll(PDO::FETCH_OBJ);
+            }
+            catch(Exception $e){
+                die('Erreur : '.$e->getMessage());
+            }
+        } 
+        
+        // Fonction qui renvoie la liste des utilisateurs banni
+        public function getAllBannedUser($bdd){
+            try{
+                $req = $bdd->prepare('SELECT * FROM utilisateur
+                WHERE status_util = :status_util;');
+                $req->execute(array(
+                    "status_util" => 1
+                ));
+                return $req->fetchAll(PDO::FETCH_OBJ);
+            }
+            catch(Exception $e){
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+        
+        // Fonction qui permet de changer le status d'un utilisateur
+        public function updateStatusUser($bdd){
+            try{
+                $req = $bdd->prepare('UPDATE utilisateur
+                SET status_util = :status_util
+                WHERE id_util = :id_util;');
+                $req->execute(array(
+                    "id_util" => $this->getId(),
+                    "status_util" => $this->getStatus()
+                ));
+            }
+            catch(Exception $e){
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+
+        // Fonction qui permet de donner le role "Admin" à un utilisateur
+        public function addAdmin($bdd){
+            try{
+                $req = $bdd->prepare('UPDATE utilisateur
+                SET id_role = :id_role
+                WHERE id_util = :id_util;');
+                $req->execute(array(
+                    "id_util" => $this->getId(),
+                    "id_role" => $this->getRole()
+                ));
+            }
+            catch(Exception $e){
+                die('Erreur : '.$e->getMessage());
+            }
+        }
     }
 ?>
 

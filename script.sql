@@ -73,5 +73,9 @@ INSERT INTO role(nom_role) VALUES
 INSERT INTO utilisateur(nom_util, prenom_util, mail_util, mdp_util, id_role) VALUES
 ("Ousseni", "Hafarou-dine", "hafarou@mail.com", "$2y$10$dcbzjwiRzIAlMB8V3N7w1.VJwCcPU8xbJvYr.QXXIfxfHpgwv/qUS", 1); -- mdp = 251020 pour password_verify() --
 
+INSERT INTO utilisateur(nom_util, prenom_util, mail_util, mdp_util) VALUES
+("Ousseni", "Hafarou-dine", "hafarou@gmail.com", "$2y$10$dcbzjwiRzIAlMB8V3N7w1.VJwCcPU8xbJvYr.QXXIfxfHpgwv/qUS"),
+("Toto", "Martin", "martin@gmail.com", "$2y$10$dcbzjwiRzIAlMB8V3N7w1.VJwCcPU8xbJvYr.QXXIfxfHpgwv/qUS");
+
 -- drop database blog; --
 
