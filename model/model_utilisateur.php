@@ -139,7 +139,41 @@
 
 
 
-        /* ------------------------------ METHODES ------------------------------ */        
+        /* ------------------------------ METHODES ------------------------------ */      
+        public function showUserByMail($bdd):array{
+            try{
+                $req = $bdd->prepare('SELECT * FROM utilisateur 
+                WHERE id_util = :id_util');
+                $req->execute(array(
+                    'id_util' => $this->getId(),
+                ));
+                $data = $req->fetchAll(PDO::FETCH_ASSOC);
+                return $data;
+            }
+            catch(Exception $e)
+            {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+
+        public function updateUser($bdd):void{
+            $mail = $this->getMail();
+            $password = $this->getMdp();
+            $id = $this->getId();
+            try{
+                $req = $bdd->prepare('UPDATE utilisateur SET mail_util = :mail_util, 
+                pwd_util = :pwd_util WHERE id_util = :id_util');
+                $req->execute(array(
+                    'mail_util' => $mail,
+                    'pwd_util' => $password,
+                    'id_util' => $id
+                    ));
+            }
+            catch(Exception $e)
+            {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
     }
 ?>
 
