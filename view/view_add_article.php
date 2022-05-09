@@ -12,14 +12,14 @@
         <p>Titre :</p>
         <input type="text" name="nom_art" id="">
         <p>Contenu :</p>
-        <textarea name="" id="content_art" cols="100" rows="10"></textarea>
+        <textarea name="content_art" id="content" cols="100" rows="10"></textarea>
         <p>
             <label for="liste_cat">Sélectionner une catégorie :</label>
             <select name="categorie" id="liste_cat">
-                <option value="cat">----- CATEGORIES -----</option>
+                <option value="default">----- CATEGORIES -----</option>
             </select>
         </p>
-        <p><input type="submit" value="Ajouter"></p>
+        <p><input type="submit" name="add" value="Ajouter"></p>
     </form>
     <script src="./asset/script/script.js"></script>
 </body>

@@ -10,7 +10,7 @@
     <h1>Liste des catégories</h1>
     <label for="liste_cat">Liste des catégories :</label>
     <select name="categorie" id="liste_cat">
-        <option value="cat">----- CATEGORIES -----</option>
+        <option value="default">----- CATEGORIES -----</option>
     </select>
     <h1>Ajouter une catégorie</h1>
     <form action="" method="post">
